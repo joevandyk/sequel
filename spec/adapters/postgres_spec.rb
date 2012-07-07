@@ -1817,7 +1817,7 @@ describe 'PostgreSQL hstore handling' do
     c.filter(:other_items=>o2).all.should == [o]
     c.filter(:other_related_items=>o).all.should == [o]
     c.filter(:mtm_items=>o).all.should == [o]
-   
+
     # Filter By Associations - Model Datasets
     c.filter(:item=>c.filter(:id=>o2.id)).all.should == [o]
     c.filter(:items=>c.filter(:id=>o.id)).all.should == [o2]
@@ -1835,7 +1835,7 @@ describe 'PostgreSQL hstore handling' do
     h1 = :h1.hstore
     h2 = :h2.hstore
     h3 = :h3.hstore
-    
+
     @ds.get(h1['a']).should == 'b'
     @ds.get(h1['d']).should == nil
 
@@ -2241,7 +2241,7 @@ describe 'PostgreSQL range types' do
 
     @db.get((1..5).pg_range(:int4range).op.overlaps(5..6)).should be_true
     @db.get((1...5).pg_range(:int4range).op.overlaps(5..6)).should be_false
-    
+
     @db.get((1..5).pg_range(:int4range).op.left_of(6..10)).should be_true
     @db.get((1..5).pg_range(:int4range).op.left_of(5..10)).should be_false
     @db.get((1..5).pg_range(:int4range).op.left_of(-1..0)).should be_false
